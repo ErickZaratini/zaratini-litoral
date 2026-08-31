@@ -1,186 +1,142 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   ZARATINI LITORAL
+   MENU + FAQ + INTERAÇÕES
+========================================================= */
 
-    /* ================= MENU ================= */
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navMenu = document.getElementById("navMenu");
+/* =========================================================
+   MENU MOBILE
+========================================================= */
 
-    if (menuBtn && navMenu) {
+const menuBtn = document.getElementById("menuBtn");
 
-        menuBtn.addEventListener("click", function () {
+const navMenu = document.getElementById("navMenu");
 
-            navMenu.classList.toggle("active");
 
-            if (navMenu.classList.contains("active")) {
-                menuBtn.textContent = "✕";
-            } else {
-                menuBtn.textContent = "☰";
-            }
+if (menuBtn && navMenu) {
+
+    menuBtn.addEventListener("click", () => {
+
+        const active = navMenu.classList.toggle("active");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            active
+        );
+
+        menuBtn.textContent = active
+            ? "✕"
+            : "☰";
+
+    });
+
+
+    navMenu.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navMenu.classList.remove("active");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuBtn.textContent = "☰";
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+const faqItems =
+    document.querySelectorAll(".faq-item");
+
+
+faqItems.forEach(item => {
+
+    const question =
+        item.querySelector(".faq-question");
+
+    const answer =
+        item.querySelector(".faq-answer");
+
+
+    question.addEventListener("click", () => {
+
+        const isActive =
+            item.classList.contains("active");
+
+
+        faqItems.forEach(otherItem => {
+
+            otherItem.classList.remove("active");
+
+            const otherAnswer =
+                otherItem.querySelector(".faq-answer");
+
+            otherAnswer.style.maxHeight = null;
 
         });
 
 
-        const menuLinks = navMenu.querySelectorAll("a");
+        if (!isActive) {
 
-        menuLinks.forEach(function (link) {
+            item.classList.add("active");
 
-            link.addEventListener("click", function () {
-
-                navMenu.classList.remove("active");
-
-                menuBtn.textContent = "☰";
-
-            });
-
-        });
-
-    }
-
-
-    /* ================= HEADER ================= */
-
-    const header = document.getElementById("header");
-
-    window.addEventListener("scroll", function () {
-
-        if (window.scrollY > 50) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
 
         }
 
     });
 
-
-    /* ================= FAQ ================= */
-
-    const faqItems = document.querySelectorAll(".faq-item");
-
-    faqItems.forEach(function (item) {
-
-        const question =
-            item.querySelector(".faq-question");
-
-        const answer =
-            item.querySelector(".faq-answer");
+});
 
 
-        question.addEventListener("click", function () {
+/* =========================================================
+   ANIMAÇÃO SUAVE AO APARECER
+========================================================= */
 
-            const isOpen =
-                item.classList.contains("active");
+const observer =
+    new IntersectionObserver(
+        entries => {
 
+            entries.forEach(entry => {
 
-            faqItems.forEach(function (otherItem) {
+                if (entry.isIntersecting) {
 
-                otherItem.classList.remove("active");
+                    entry.target.classList.add("visible");
 
-                const otherAnswer =
-                    otherItem.querySelector(".faq-answer");
+                    observer.unobserve(
+                        entry.target
+                    );
 
-                if (otherAnswer) {
-                    otherAnswer.style.maxHeight = null;
                 }
 
             });
 
-
-            if (!isOpen) {
-
-                item.classList.add("active");
-
-                answer.style.maxHeight =
-                    answer.scrollHeight + "px";
-
-            }
-
-        });
-
-    });
-
-
-    /* ================= LINKS DE COMPRA ================= */
-
-    const buyButtons =
-        document.querySelectorAll(".buy-button");
-
-
-    buyButtons.forEach(function (button) {
-
-        button.addEventListener("click", function (event) {
-
-            const link =
-                button.getAttribute("href");
-
-
-            if (
-                !link ||
-                link === "#" ||
-                link.indexOf("SEU_LINK") === 0
-            ) {
-
-                event.preventDefault();
-
-                alert(
-                    "🚀 O link de pagamento será configurado nesta etapa."
-                );
-
-            }
-
-        });
-
-    });
-
-
-    /* ================= SCROLL SUAVE ================= */
-
-    const internalLinks =
-        document.querySelectorAll('a[href^="#"]');
-
-
-    internalLinks.forEach(function (link) {
-
-        link.addEventListener("click", function (event) {
-
-            const targetId =
-                link.getAttribute("href");
-
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
-
-
-            const target =
-                document.querySelector(targetId);
-
-
-            if (!target) {
-                return;
-            }
-
-
-            event.preventDefault();
-
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        });
-
-    });
-
-
-    console.log(
-        "🌊 Zaratini Litoral carregado corretamente!"
+        },
+        {
+            threshold: 0.12
+        }
     );
 
-});
+
+document
+    .querySelectorAll(
+        ".benefit-card, .ebook-card, .course-step, .video-box"
+    )
+    .forEach(element => {
+
+        element.classList.add("reveal");
+
+        observer.observe(element);
+
+    });
