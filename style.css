@@ -1,0 +1,1194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ocean: #073b4c;
+    --ocean-dark: #052c39;
+    --turquoise: #159a9c;
+    --sky: #bde9ed;
+    --sand: #f6ead6;
+    --cream: #fffaf2;
+    --orange: #e76f51;
+    --yellow: #ffd166;
+    --green: #39745f;
+    --text: #17343d;
+    --muted: #687b80;
+    --white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: 0.3s;
+}
+
+.header.scrolled {
+    background: rgba(255, 250, 242, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo,
+.footer-logo {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--orange);
+    font-family: "Playfair Display", serif;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nav-menu a:hover {
+    color: var(--orange);
+}
+
+.nav-button {
+    background: var(--ocean);
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 50px;
+}
+
+.menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    position: relative;
+    min-height: 760px;
+    padding: 150px 0 100px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #d7f2f1 0%,
+            #b9e6ea 45%,
+            #f5d8b5 100%
+        );
+}
+
+.hero-container {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.location {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.7);
+    color: var(--ocean);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    margin-top: 20px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(50px, 6vw, 80px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--orange);
+}
+
+.hero-content > p {
+    max-width: 570px;
+    margin: 30px 0;
+    color: #405e65;
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    transition: 0.25s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button.primary {
+    background: var(--ocean);
+    color: white;
+    box-shadow: 0 12px 30px rgba(7,59,76,0.2);
+}
+
+.button.secondary {
+    background: rgba(255,255,255,0.7);
+    color: var(--ocean);
+}
+
+.button.white {
+    background: white;
+    color: var(--ocean);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 35px;
+    margin-top: 45px;
+}
+
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-stats strong {
+    font-size: 14px;
+}
+
+.hero-stats span {
+    color: #5d777e;
+    font-size: 11px;
+}
+
+
+/* ================= HERO CARD ================= */
+
+.hero-card {
+    position: relative;
+    width: min(470px, 100%);
+    height: 520px;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 40px;
+    transform: rotate(2deg);
+    background:
+        linear-gradient(
+            180deg,
+            #f6c879 0%,
+            #ef8d65 42%,
+            #159a9c 43%,
+            #073b4c 100%
+        );
+    box-shadow: 0 35px 70px rgba(7,59,76,0.25);
+}
+
+.sun {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 55px;
+    right: 60px;
+    border-radius: 50%;
+    background: var(--yellow);
+}
+
+.ocean {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    background:
+        repeating-linear-gradient(
+            -10deg,
+            transparent 0,
+            transparent 25px,
+            rgba(255,255,255,0.12) 26px,
+            rgba(255,255,255,0.12) 28px
+        );
+}
+
+.hero-guitar {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    font-size: 180px;
+    filter: drop-shadow(0 25px 20px rgba(0,0,0,0.25));
+}
+
+.hero-card-text {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 17px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.92);
+}
+
+.hero-card-text strong {
+    font-size: 14px;
+}
+
+.hero-card-text span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 110px 0;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.section-heading > span,
+.small-title {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    margin: 10px 0 15px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.05;
+}
+
+.section-heading h2 em {
+    color: var(--orange);
+    font-style: normal;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+
+/* ================= BENEFITS ================= */
+
+.benefits {
+    background: var(--cream);
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.benefit-card {
+    padding: 30px;
+    border-radius: 24px;
+    background: white;
+    transition: 0.3s;
+    border: 1px solid rgba(7,59,76,0.07);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(7,59,76,0.12);
+}
+
+.benefit-icon {
+    margin-bottom: 18px;
+    font-size: 38px;
+}
+
+.benefit-card h3 {
+    margin-bottom: 8px;
+}
+
+.benefit-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ================= COURSE ================= */
+
+.course {
+    background: var(--sand);
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.course-visual {
+    position: relative;
+    height: 590px;
+    overflow: hidden;
+    border-radius: 35px;
+    background:
+        linear-gradient(
+            160deg,
+            #f4a261 0%,
+            #e76f51 45%,
+            #0b6470 46%,
+            #073b4c 100%
+        );
+    box-shadow: 0 25px 60px rgba(7,59,76,0.15);
+}
+
+.course-label {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 8px 14px;
+    border-radius: 50px;
+    background: white;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.big-guitar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    font-size: 230px;
+    filter: drop-shadow(0 30px 20px rgba(0,0,0,0.3));
+}
+
+.course-sticker {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 125px;
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--cream);
+    transform: rotate(-8deg);
+}
+
+.course-sticker strong {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+}
+
+.course-sticker span {
+    font-size: 10px;
+}
+
+.course-content h2 {
+    margin: 10px 0 20px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.05;
+}
+
+.course-content > p {
+    max-width: 570px;
+    color: var(--muted);
+}
+
+.course-list {
+    margin: 30px 0;
+}
+
+.course-step {
+    display: flex;
+    gap: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(7,59,76,0.1);
+}
+
+.course-step > span {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--ocean);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.course-step h3 {
+    font-size: 15px;
+}
+
+.course-step p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+/* ================= EBOOKS ================= */
+
+.ebooks {
+    background: white;
+}
+
+.ebook-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.ebook-card {
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    border-radius: 25px;
+    background: white;
+    transition: 0.3s;
+}
+
+.ebook-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(7,59,76,0.12);
+}
+
+.ebook-cover {
+    position: relative;
+    height: 340px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+}
+
+.ebook-cover.blue {
+    background: linear-gradient(150deg, #0b6470, #073b4c);
+}
+
+.ebook-cover.sunset {
+    background: linear-gradient(150deg, #f4a261, #e76f51);
+}
+
+.ebook-cover.green {
+    background: linear-gradient(150deg, #39745f, #174d4a);
+}
+
+.cover-brand {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.cover-icon {
+    position: absolute;
+    top: 100px;
+    right: 25px;
+    font-size: 90px;
+    transform: rotate(10deg);
+}
+
+.cover-title small {
+    font-size: 10px;
+}
+
+.cover-title h3 {
+    max-width: 260px;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.cover-title span {
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.ebook-body {
+    padding: 25px;
+}
+
+.tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    border-radius: 50px;
+    background: #fff0df;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ebook-body h3 {
+    margin-bottom: 8px;
+}
+
+.ebook-body > p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.ebook-body ul {
+    margin: 18px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ebook-body li {
+    margin: 6px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+.price small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.price strong {
+    color: var(--ocean);
+    font-size: 25px;
+}
+
+.buy-button {
+    padding: 12px 18px;
+    border-radius: 50px;
+    background: var(--ocean);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.buy-button:hover {
+    background: var(--orange);
+}
+
+
+/* ================= PACK ================= */
+
+.pack {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 35px;
+    margin-top: 45px;
+    padding: 35px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--ocean), var(--turquoise));
+    color: white;
+}
+
+.pack-text > span {
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.pack h3 {
+    margin: 5px 0;
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+}
+
+.pack p {
+    color: #cbe5e7;
+    font-size: 13px;
+}
+
+.pack-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.pack-price small {
+    color: #c1dde0;
+}
+
+.pack-price strong {
+    font-size: 34px;
+}
+
+
+/* ================= VIDEOS ================= */
+
+.videos {
+    background: var(--sky);
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.video-box {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 25px;
+    background: linear-gradient(160deg, #073b4c, #159a9c);
+    color: white;
+}
+
+.video-box span {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    font-size: 25px;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+    background: white;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-photo {
+    height: 520px;
+    padding: 20px;
+    border-radius: 35px;
+    background: linear-gradient(160deg, #b9e6ea, #f4a261);
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed rgba(7,59,76,0.25);
+    border-radius: 25px;
+}
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+}
+
+.photo-placeholder span {
+    font-size: 100px;
+}
+
+
+.photo-placeholder strong {
+    margin-top: 15px;
+}
+
+.photo-placeholder small {
+    max-width: 250px;
+    margin-top: 8px;
+    color: var(--muted);
+}
+
+.about-content h2 {
+    margin: 10px 0 25px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    color: var(--muted);
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--orange);
+    font-weight: 800;
+}
+
+
+/* ================= FAQ ================= */
+
+.faq {
+    background: var(--sand);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(7,59,76,0.15);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.faq-question span {
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(45deg);
+}
+
+
+/* ================= CTA ================= */
+
+.final-cta {
+    padding: 110px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #073b4c, #159a9c);
+    color: white;
+}
+
+.final-cta > .container > span {
+    color: var(--yellow);
+    font-weight: 700;
+}
+
+.final-cta h2 {
+    margin: 15px 0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 7vw, 75px);
+    line-height: 1;
+}
+
+.final-cta p {
+    margin-bottom: 30px;
+    color: #cce5e7;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: var(--ocean-dark);
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    padding: 70px 0;
+}
+
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.footer p {
+    color: #9fc1c7;
+    font-size: 13px;
+}
+
+.footer h4 {
+    margin-bottom: 15px;
+}
+
+.footer-grid > div:not(:first-child) a {
+    display: block;
+    margin: 8px 0;
+    color: #9fc1c7;
+    font-size: 13px;
+}
+
+.footer-grid a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-bottom .container {
+    padding: 20px 0;
+}
+
+
+/* ================= RESPONSIVO ================= */
+
+@media (max-width: 900px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 75px;
+        left: 20px;
+        right: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 20px;
+        border-radius: 20px;
+        background: white;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 12px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+        margin: 20px auto 0;
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ebook-grid,
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pack {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .hero {
+        padding-top: 125px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    .hero-content > p {
+        font-size: 16px;
+    }
+
+    .hero-stats {
+        gap: 18px;
+    }
+
+    .hero-card {
+        height: 430px;
+    }
+
+    .hero-guitar {
+        font-size: 130px;
+    }
+
+    .benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-visual,
+    .about-photo {
+        height: 430px;
+    }
+
+    .big-guitar {
+        font-size: 160px;
+    }
+
+    .ebook-cover {
+        height: 300px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}/* =====================================================
+   FOTO PRINCIPAL - ZARATINI LITORAL
+   ===================================================== */
+
+/* =====================================================
+   ZARATINI LITORAL - NOVO HERO
+   Foto principal no início do site
+   ===================================================== */
+
+.hero {
+    position: relative;
+    min-height: 720px;
+    background: #f8f5ef !important;
+    overflow: hidden;
+}
+
+/* Remove a ilustração antiga do lado direito */
+.hero .hero-visual {
+    display: none !important;
+}
+
+/* Organiza texto e foto */
+.hero .hero-container {
+    position: relative;
+    z-index: 2;
+    min-height: 720px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Texto */
+.hero .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+}
+
+/* Foto principal */
+.hero::after {
+    content: "";
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 47%;
+    height: 620px;
+
+    background-image: url("Images/erick-violao-litoral.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 50, 60, 0.20);
+
+    z-index: 1;
+}
+
+/* Pequeno efeito de borda */
+.hero::before {
+    content: "";
+    position: absolute;
+    right: 3.5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 47%;
+    height: 620px;
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* =====================================================
+   CELULAR
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+
+    .hero .hero-container {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero::after {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+
+        display: block;
+
+        width: calc(100% - 40px);
+        height: 450px;
+
+        margin: 0 auto;
+
+        border-radius: 30px;
+    }
+
+    .hero::before {
+        display: none;
+    }
+}/* =====================================================
+   AJUSTE FINAL DO HERO
+   Remove o visual antigo e mantém a foto
+   ===================================================== */
+
+.hero .hero-container > :last-child {
+    display: none !important;
+}
+
+/* Mantém o texto bem posicionado */
+.hero .hero-container {
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+/* Garante que a foto fique visível */
+.hero::after {
+    display: block !important;
+}
